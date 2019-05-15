@@ -3,15 +3,18 @@ package main
 import "syscall/js"
 
 func main() {
-	f_fib := func(params []js.Value) {
+	f_fib := js.FuncOf(func(jsThis js.Value, params []js.Value) interface{} {
 		var n = params[0].Int()  // 输入参数
 		var callback = params[1] // 回调参数
 		var result = fib(n)
 		// 调用回调函数，传入计算结果
 		callback.Invoke(result)
-	}
+		return nil
+	})
 	// 注册全局函数
+
 	js.Global().Set("fib", f_fib)
+	js.Global().Set("test", "testGlobal")
 	// 保持 main 函数持续运行
 	select {}
 }

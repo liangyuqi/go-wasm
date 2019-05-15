@@ -1,0 +1,11 @@
+{
+    "extends": [
+      "tslint-config-standard",
+      "tslint-config-prettier"
+    ],
+    "rules": {
+      "no-empty": false,
+      "semicolon": [true, "never"]
+    }
+  }
+  

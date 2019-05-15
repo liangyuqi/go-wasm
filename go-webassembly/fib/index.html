@@ -1,16 +1,9 @@
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <script src="../lib/wasm_exec.js"></script>
-    <script>
-      const go = new Go();
-      WebAssembly.instantiateStreaming(
-        fetch("fib.wasm"),
-        go.importObject
-      ).then(result => {
-        go.run(result.instance);
-      });
-    </script>
-  </head>
-  <body></body>
+  <head> </head>
+  <body>
+    <h1>hello , world</h1>
+    <!-- 输入发生变化时，调用 WebAssembly 的 fib 函数 -->
+    <input type="number" id="param" oninput="callFib()" />
+    <input type="text" id="result" />
+  </body>
 </html>
