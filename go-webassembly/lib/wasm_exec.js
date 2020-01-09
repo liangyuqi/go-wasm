@@ -2,6 +2,13 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
+// 而且生成等output.wasm还无法直接运行，需要初始化Go语言必须的运行时环境。
+
+// 对运行时初始化是一个相对复杂的工作，因此Go语言提供了一个(GOROOT)/misc/wasm/go_js_wasm_exec脚本文件，用于执行Go语言生成的wasm文件。
+
+// 参考go_js_wasm_exec脚本的实现，我们可以直接使用wasm_exec.js来运行wasm模块。我们可以先将wasm_exec.js文件复制到当前目录，然后通过以下命令运行wasm模块：
+
+
 (() => {
 	if (typeof global !== "undefined") {
 		// global already exists
